@@ -7,7 +7,7 @@
       <% @posts.shuffle.each do |post| %>
         <div class="box">
           <h4><%= link_to post.title, post %></h4>
-          <p><%= truncate post.blog, :length => 120 %></p>
+          <p><%= truncate post.blog, :length => [*20..100].sample %></p>
           <p>
             <%= link_to "Show", post, :class => "btn btn-small btn-info" %>
             <% # Checks if this blog was written by current author %>
