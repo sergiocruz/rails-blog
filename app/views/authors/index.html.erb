@@ -1,0 +1,40 @@
+<div class="well">
+  <h1>Welcome to Rails Blog</h1>
+
+  <% if @current_author.present? %>
+
+    <!-- Welcome back message -->
+    <p class="lead">
+      Welcome back <%= @current_author.name %>... <%= link_to "start blogging now!", posts_path %>
+    </p>
+
+    <!-- Not this person message -->
+    <p>
+      <%= link_to "Not " + @current_author.name + "?", authors_forget_path %>
+    </p>
+
+  <% else %>
+
+    <!-- Welcome Message -->
+    <p class="lead">
+      To start blogging just enter your name below:
+    </p>
+
+    <!-- Login Form -->
+    <%= form_for @author do |f| %>
+      <div class="control-group">
+        <%= f.label :name %>
+        <div class="field">
+          <%= f.text_field :name, :class => "span5" %>
+        </div>
+      </div>
+      <%= f.submit 'Login', :class => "btn btn-primary" %>
+    <%end %>
+
+  <% end %>
+
+</div>
+
+<p>
+  Don't want to login? Click to <%= link_to "view the blogs", posts_path %>.
+</p>

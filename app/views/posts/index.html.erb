@@ -1,0 +1,22 @@
+  <% if @posts.empty? %>
+    <p class="lead">
+      <em>No posts were found.</em>
+    </p>
+  <% else %>
+    <div id="container">
+      <% @posts.shuffle.each do |post| %>
+        <div class="box">
+          <h4><%= link_to post.title, post %></h4>
+          <p><%= truncate post.blog, :length => 120 %></p>
+          <p>
+            <%= link_to "Show", post, :class => "btn btn-small btn-info" %>
+            <% # Checks if this blog was written by current author %>
+            <% if @current_author.present? && post.author_id == @current_author.id %>
+              <%= link_to "Edit", edit_post_path(post), :class => "btn btn-small" %>
+              <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-small" %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>

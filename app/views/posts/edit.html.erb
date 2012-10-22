@@ -1,0 +1,21 @@
+<h1>Edit Post</h1>
+<p>Find me in app/views/posts/edit.html.erb</p>
+
+<%= form_for @post do |f| %>
+
+  <div class="control-group">
+	  <%= f.label :title %>
+	  <div class="field">
+	  	<%= f.text_field :title, :class => "span10" %>
+	  </div>
+  </div>
+
+  <div class="control-group">
+	<%= f.label :blog %>
+	  <div class="field">
+	  <%= f.text_area :blog, :size => "20x10", :class => "span10" %>
+	</div>
+  </div>
+
+  <%= f.submit 'Submit', :class => "btn btn-primary" %>
+<% end %>

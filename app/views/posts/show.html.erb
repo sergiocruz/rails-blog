@@ -1,0 +1,19 @@
+<!-- Title -->
+<h1><%= @post.title %></h1>
+
+<!-- Details -->
+<p class="muted">Posted on <%= @post.created_at.strftime("%d %b %Y at %I:%M%p") %></p>
+
+<!-- Blog -->
+<div class="blog">
+<%= simple_format @post.blog %>
+</div>
+
+<!-- Buttons -->
+<p>
+  <% if @current_author.present? && @post.author_id == @current_author.id %>
+    <%= link_to "Edit", edit_post_path(@post), :class => "btn" %>
+    <%= link_to "Delete", @post, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>
+  <% end %>
+  <%= link_to 'See all posts', posts_path, :class => "btn btn-info" %>
+</p>
