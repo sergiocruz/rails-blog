@@ -59,17 +59,19 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # Fetches post
+    @post = Posts.find(params[:id])
 
     # Only actual author can delete this post
     if @post.author_id != @current_author.id
       redirect_to @post, notice: 'Sorry, you do not have permission to delete this post.'
-    end
+    else
+      #deletes post
+      @post.destroy
 
-    @post = Posts.find(params[:id])
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_path, :notice => "Post was deleted." }
+      respond_to do |format|
+        format.html { redirect_to posts_path, :notice => "Post was deleted." }
+      end
     end
   end
 end
