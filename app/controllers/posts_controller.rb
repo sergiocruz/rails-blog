@@ -64,8 +64,11 @@ class PostsController < ApplicationController
 
     # Only actual author can delete this post
     if @post.author_id != @current_author.id
-      redirect_to @post, notice: 'Sorry, you do not have permission to delete this post.'
+      respond_to do |format|
+        format.html { redirect_to posts_path, :notice => 'Sorry, you do not have permission to delete this post.' }
+      end
     else
+
       #deletes post
       @post.destroy
 
