@@ -27,7 +27,7 @@
         <ul class="nav">
           <li><%= link_to "Home", root_url %></li>
           <li><%= link_to "Blog", posts_path %></li>
-          <% if @current_author.present? %><li><%= link_to "New post", posts_new_path %></li><%end%>
+          <% if @current_author.present? %><li><%= link_to "New post", :controller => "posts", :action => "new" %></li><%end%>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
